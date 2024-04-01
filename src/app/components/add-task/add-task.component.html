@@ -1,5 +1,5 @@
 <!-- we can use ngSubmit, which is pretty cool. don't have to do the preventDefault thing when doing this -->
-<form class="add-form" (ngSubmit)="onSubmit()">
+<form class="add-form" (ngSubmit)="onSubmit()" *ngIf="showAddTask">
   <div class="form-control">
     <label for="text">Tasks</label>
     <!-- so, for one way data binding, we use single pair of brackets, the [] are for input data binding and () are for output data binding, basically what we do with events and stuff. Since forms require two way data binding, we need to use both pair of brackets -->

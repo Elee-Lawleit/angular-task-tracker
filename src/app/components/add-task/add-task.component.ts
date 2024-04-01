@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../../Task';
+import { CommonModule } from '@angular/common';
+import { UiService } from '../../services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 })
@@ -14,8 +17,20 @@ export class AddTaskComponent {
   text: string = '';
   day: string = '';
   reminder: boolean = false;
+  showAddTask: boolean = false;
+  subscription!: Subscription;
 
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
+
+  constructor(private uiService: UiService) {
+
+    //changing the state variable here as well, to the global state value
+
+    //passing state can be a little confusing but I think I'll get the hang of it
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddTask = value));
+  }
 
   onSubmit() {
     if (!this.text) {
@@ -29,7 +44,7 @@ export class AddTaskComponent {
       reminder: this.reminder,
     };
 
-    this.onAddTask.emit(newTask)
+    this.onAddTask.emit(newTask);
 
     this.text = '';
     (this.day = ''), (this.reminder = false);
