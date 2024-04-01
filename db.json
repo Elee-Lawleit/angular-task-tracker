@@ -17,6 +17,12 @@
       "text": "Food Shopping",
       "day": "May 7th at 12:30pm",
       "reminder": false
+    },
+    {
+      "id": "f1d6",
+      "text": "Watch Anime",
+      "day": "May 7, 2024 from 10am - 9pm",
+      "reminder": true
     }
   ]
 }

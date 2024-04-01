@@ -1,0 +1,24 @@
+<!-- we can use ngSubmit, which is pretty cool. don't have to do the preventDefault thing when doing this -->
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="text">Tasks</label>
+    <!-- so, for one way data binding, we use single pair of brackets, the [] are for input data binding and () are for output data binding, basically what we do with events and stuff. Since forms require two way data binding, we need to use both pair of brackets -->
+
+    <!-- and then basically giving it the field variable name we defined in the class -->
+
+    <!-- need to have the name attribute with the same value LOOK INTO THIS LATER -->
+    <input [(ngModel)]="text" type="text" name="text" id="text" placeholder="Add Task" />
+  </div>
+  <div class="form-control">
+    <label for="day">Day & Time</label>
+    <input [(ngModel)]="day" type="text" name="day" id="day" placeholder="Day & Time" />
+  </div>
+  <div class="form-control form-control-check">
+    <label for="reminder">Set Reminder</label>
+    <input  [(ngModel)]="reminder" type="checkbox" name="reminder" id="reminder" />
+  </div>
+  <input type="submit" value="Save Task" class="btn btn-block" />
+
+  <!-- this will show up on the page, because it's a two way binding -->
+  <!-- {{text}} -->
+</form>

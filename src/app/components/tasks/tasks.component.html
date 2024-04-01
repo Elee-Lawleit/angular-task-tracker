@@ -1,6 +1,11 @@
 <!-- so I am guessing that [task]="task" is kind of like passing in key in react -->
 
 <!-- it might be acting as the key? BUT, we are passing it as a prop to each Task Item component here -->
+
+<!-- can get the task through the event value that's being emitted -->
+<app-add-task (onAddTask)="addTask($event)"></app-add-task>
+
+<!-- we had access to task here because of the ngFor loop -->
 <app-task-item
   *ngFor="let task of tasks"
   [task]="task"
