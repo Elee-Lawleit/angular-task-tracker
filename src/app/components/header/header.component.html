@@ -1,5 +1,12 @@
 <header>
-  <h1>{{title}}</h1>
+  <h1>{{ title }}</h1>
   <!-- Passing props in Angular -->
-  <app-button color="{{showAddTask ? 'red': 'green'}}" text="{{showAddTask ? 'Close': 'Add'}}" (btnClick)="toggleAddTask()"></app-button>
+
+  <!-- won't display the add task button on about page, doing that by checking url path -->
+  <app-button
+    *ngIf="hasRoute('/')"
+    color="{{ showAddTask ? 'red' : 'green' }}"
+    text="{{ showAddTask ? 'Close' : 'Add' }}"
+    (btnClick)="toggleAddTask()"
+  ></app-button>
 </header>
