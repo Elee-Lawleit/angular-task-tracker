@@ -18,6 +18,20 @@ export class TasksComponent {
   //in the constructor
   constructor(private taskService: TaskService) {}
 
+  deleteTask(task: Task) {
+    //sending the http request and then updating the state variable
+    this.taskService
+      .deleteTask(task)
+      .subscribe(
+        (task) => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+      );
+  }
+
+  toggleReminder(task: Task){
+    task.reminder = !task.reminder
+    this.taskService.updateTaskReminder(task).subscribe()
+  }
+
   //this is a lifecycle method
   //can be thought as lifecycle methods in react
   //class based componenets and hooks in functional
